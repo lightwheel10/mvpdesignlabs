@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Github, Linkedin, Twitter } from "lucide-react";
 
 const founder = {
   name: "Paras Tiwari",
