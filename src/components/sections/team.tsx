@@ -65,22 +65,6 @@ export const Team = () => {
                   quality={90}
                 />
               </div>
-              {/* Social Links */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4 p-4 bg-background/80 backdrop-blur-sm rounded-full border shadow-lg">
-                {Object.entries(founder.social).map(([platform, link]) => (
-                  <a
-                    key={platform}
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
-                  >
-                    {platform === 'twitter' && <Twitter className="w-5 h-5" />}
-                    {platform === 'linkedin' && <Linkedin className="w-5 h-5" />}
-                    {platform === 'github' && <Github className="w-5 h-5" />}
-                  </a>
-                ))}
-              </div>
             </motion.div>
 
             {/* Right Column - Content */}
