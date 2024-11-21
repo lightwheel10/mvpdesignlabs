@@ -20,10 +20,10 @@ const projects = [
     ]
   },
   {
-    title: "NeuroTalent Connect",
+    title: "NeuroDev",
     description: "Recruitment platform designed specifically for neurodivergent individuals, making job hunting more accessible.",
     category: "Web Application",
-    image: "https://via.placeholder.com/1200x600/1a1a1a/ffffff",
+    image: "/images/neurodivergentplatformimg.png",
     link: "https://neurodivergent-platform.web.app/",
     color: "from-purple-500/20 to-pink-500/20",
     techStack: [
