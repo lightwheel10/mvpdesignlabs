@@ -1,6 +1,6 @@
 ---
 title: 'What is an MVP, and Why Does It Matter for Your Startup Idea?'
-date: '2024-03-21'
+date: '2024-11-24'
 excerpt: >-
   Discover why building a Minimum Viable Product (MVP) is crucial for startup success. Learn how to validate your business idea, save resources, and attract investors with a strategic MVP approach.
 coverImage: /blog/images/mvp-concept.jpg
