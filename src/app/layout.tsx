@@ -25,6 +25,14 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   ...baseMetadata,
+  openGraph: {
+    images: [{
+      url: '/images/og.png',
+      width: 1200,
+      height: 630,
+      alt: 'MVP Forge - From Idea to MVP in Record Time'
+    }]
+  }
 };
 
 export default function RootLayout({
