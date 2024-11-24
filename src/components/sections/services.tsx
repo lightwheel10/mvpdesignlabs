@@ -56,31 +56,31 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-24 relative">
-      <div className="container">
-        {/* Decorative Elements */}
+    <section id="services" className="py-16 md:py-24 relative">
+      <div className="container px-4 md:px-6">
+        {/* Decorative Elements - adjusted for mobile */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl 
+          <div className="absolute w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl 
             top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20" />
         </div>
 
         {/* Main Content */}
         <div className="relative z-10">
-          {/* Header */}
+          {/* Header - adjusted for mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold px-4 md:px-0">
               Solutions That{" "}
               <span className="inline-block">Drive Growth</span>
             </h2>
           </motion.div>
 
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {/* Services Grid - adjusted for mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -94,37 +94,37 @@ export const Services = () => {
                 }}
               >
                 <div className="relative group">
-                  {/* Service Card */}
+                  {/* Service Card - adjusted padding and sizing for mobile */}
                   <div className={`
-                    relative z-10 p-8 rounded-2xl backdrop-blur-sm
+                    relative z-10 p-6 md:p-8 rounded-2xl backdrop-blur-sm
                     bg-gradient-to-b from-white/10 to-white/5
                     border border-white/10 hover:border-white/20
                     transition-all duration-500 ease-out
                     hover:translate-y-[-5px] hover:shadow-2xl
                     ${service.shadowColor}
                   `}>
-                    {/* Icon Container */}
+                    {/* Icon Container - adjusted sizing for mobile */}
                     <div className={`
-                      mb-6 inline-flex p-3 rounded-xl
+                      mb-4 md:mb-6 inline-flex p-2.5 md:p-3 rounded-xl
                       bg-gradient-to-br ${service.color}
                       shadow-lg group-hover:shadow-2xl
                       transition-all duration-500
                       group-hover:scale-110
                     `}>
-                      <service.icon className="w-6 h-6 text-white" />
+                      <service.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     </div>
 
-                    {/* Content */}
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold tracking-tight">
+                    {/* Content - adjusted text sizes for mobile */}
+                    <div className="space-y-3 md:space-y-4">
+                      <h3 className="text-lg md:text-xl font-semibold tracking-tight">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-sm md:text-base text-muted-foreground">
                         {service.description}
                       </p>
                     </div>
 
-                    {/* Hover Effect Line */}
+                    {/* Hover Effect Line - kept unchanged */}
                     <div className={`
                       absolute bottom-0 left-0 right-0 h-1 rounded-full 
                       bg-gradient-to-r ${service.color} opacity-0 
@@ -132,7 +132,7 @@ export const Services = () => {
                     `} />
                   </div>
 
-                  {/* Background Glow */}
+                  {/* Background Glow - kept unchanged */}
                   <div className={`
                     absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 
                     transition-opacity duration-500 -z-10 blur-xl

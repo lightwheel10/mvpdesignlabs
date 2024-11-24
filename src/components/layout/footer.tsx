@@ -64,10 +64,10 @@ export const Footer = () => {
 
   return (
     <footer className="border-t">
-      <div className="container py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div className="container py-8 md:py-12">
+        <div className="flex flex-col gap-8">
           {/* Logo & Social */}
-          <div className="space-y-4 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start space-y-4">
             <Link href="/" className="text-xl font-bold">
               MVPDesignLabs
             </Link>
@@ -90,13 +90,13 @@ export const Footer = () => {
           </div>
 
           {/* Links */}
-          <nav className="flex gap-8">
+          <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8">
             {footerLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer px-2 py-1"
               >
                 {link.label}
               </a>
@@ -104,7 +104,7 @@ export const Footer = () => {
           </nav>
 
           {/* Copyright */}
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground text-center md:text-left">
             {new Date().getFullYear()} MVPDesignLabs. All rights reserved.
           </div>
         </div>
