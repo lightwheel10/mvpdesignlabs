@@ -28,8 +28,8 @@ export const baseMetadata: Metadata = {
     "Product Development",
     "MVP Strategy"
   ],
-  authors: [{ name: "MVP Forge" }],
-  creator: "MVP Forge",
+  authors: [{ name: "MVP Design Labs" }],
+  creator: "MVP Design Labs",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -51,7 +51,7 @@ export const baseMetadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@mvpforge",
+    creator: "@mvpdesignlabs",
   },
   robots: {
     index: true,
