@@ -68,7 +68,6 @@ export const baseMetadata: Metadata = {
     canonical: siteConfig.url,
   },
   verification: {
-    // Add your verification tokens if needed
-    google: "your-google-verification-code",
+    google: "YOUR-ACTUAL-VERIFICATION-CODE",
   }
 }; 
