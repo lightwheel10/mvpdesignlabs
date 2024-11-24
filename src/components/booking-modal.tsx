@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface BookingModalProps {
 }
 
 export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
+  const { trackEvent } = useAnalytics();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +26,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     setIsSubmitting(true);
 
     try {
-      // Log the initial contact info
+      trackEvent('Form', 'submit', 'Booking Form');
       await fetch('/api/schedule-meeting', {
         method: 'POST',
         headers: {
@@ -32,10 +35,12 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         body: JSON.stringify(formData),
       });
 
-      // Redirect to Calendly
+      trackEvent('Form', 'success', 'Booking Form');
+      
       window.open('https://calendly.com/tiwariparas1096/30min', '_blank');
       onClose();
     } catch (error) {
+      trackEvent('Form', 'error', 'Booking Form');
       console.error('Error:', error);
     } finally {
       setIsSubmitting(false);

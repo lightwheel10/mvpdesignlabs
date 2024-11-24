@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 const socialLinks = [
@@ -35,18 +36,29 @@ const footerLinks = [
     label: 'Portfolio',
     href: '#portfolio',
   },
+  {
+    label: 'Blog',
+    href: '/blog',
+  },
 ];
 
 export const Footer = () => {
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start',
-        inline: 'nearest'
-      });
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
+    } else {
+      e.preventDefault();
+      router.push(href);
     }
   };
 
@@ -57,7 +69,7 @@ export const Footer = () => {
           {/* Logo & Social */}
           <div className="space-y-4 text-center md:text-left">
             <Link href="/" className="text-xl font-bold">
-              MVP Design Labs
+              MVPDesignLabs
             </Link>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -83,7 +95,7 @@ export const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
+                onClick={(e) => handleClick(e, link.href)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
                 {link.label}
@@ -93,10 +105,10 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} MVP Design Labs. All rights reserved.
+            {new Date().getFullYear()} MVPDesignLabs. All rights reserved.
           </div>
         </div>
       </div>
     </footer>
   );
-}; 
+}

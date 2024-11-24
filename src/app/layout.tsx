@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
+import { baseMetadata } from "@/lib/metadata";
+import Script from "next/script";
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,10 +23,8 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta'
 });
 
-export const metadata: Metadata = {
-  title: "MVP Forge | Transform Your Ideas into Digital Reality",
-  description: "We craft digital products that make an impact. From MVPs to enterprise solutions, we transform your vision into exceptional digital experiences.",
-  keywords: "MVP development, web development, mobile apps, digital agency",
+export const metadata = {
+  ...baseMetadata,
 };
 
 export default function RootLayout({
@@ -34,11 +34,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ETF5SYHZ1G"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ETF5SYHZ1G');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} ${plusJakarta.variable} antialiased`}
       >
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

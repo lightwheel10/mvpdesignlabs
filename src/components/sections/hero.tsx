@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Code, Rocket, Layout } from "lucide-react";
 import { useState, useEffect } from "react";
 import { BookingModal } from "@/components/booking-modal";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const rotatingWords = [
   { text: "Innovation", color: "text-blue-500" },
@@ -17,6 +18,7 @@ const rotatingWords = [
 export const Hero = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { trackEvent } = useAnalytics();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -152,7 +154,14 @@ export const Hero = () => {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" className="group h-14 px-8 text-lg" onClick={() => setIsModalOpen(true)}>
+              <Button 
+                size="lg" 
+                className="group h-14 px-8 text-lg" 
+                onClick={() => {
+                  trackEvent('CTA', 'click', 'Hero - Start Your Project');
+                  setIsModalOpen(true);
+                }}
+              >
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>

@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { useState } from "react";
 import { BookingModal } from "@/components/booking-modal";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export const ContactCTA = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { trackEvent } = useAnalytics();
 
   return (
     <>
@@ -38,7 +40,10 @@ export const ContactCTA = () => {
               <Button 
                 size="lg" 
                 className="group h-14 px-8 text-lg"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  trackEvent('CTA', 'click', 'Footer - Schedule Call');
+                  setIsModalOpen(true);
+                }}
               >
                 Schedule a Call
                 <Calendar className="ml-2 w-5 h-5 transition-transform group-hover:scale-110" />

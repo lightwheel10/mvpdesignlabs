@@ -5,6 +5,7 @@ import { Check, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { BookingModal } from "@/components/booking-modal";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const pricingPlans = [
   {
@@ -100,6 +101,7 @@ const pricingPlans = [
 
 export const Pricing = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { trackEvent } = useAnalytics();
 
   return (
     <>
@@ -225,9 +227,12 @@ export const Pricing = () => {
                     className="w-full group" 
                     size="lg"
                     variant={plan.popular ? "default" : "outline"}
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => {
+                      trackEvent('Pricing', 'click', `Plan - ${plan.name}`);
+                      setIsModalOpen(true);
+                    }}
                   >
-                    Start Your Project
+                    {plan.cta}
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
@@ -249,7 +254,10 @@ export const Pricing = () => {
               variant="outline" 
               size="lg" 
               className="group"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                trackEvent('Pricing', 'click', 'Custom Solution');
+                setIsModalOpen(true);
+              }}
             >
               Contact Us
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />

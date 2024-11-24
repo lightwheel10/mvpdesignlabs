@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from '@tailwindcss/typography';
 
 export default {
     darkMode: ["class"],
@@ -74,11 +75,21 @@ export default {
             'background-position': '0 0',
           },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
         gradient: 'gradient 15s ease infinite',
         'gradient-slow': 'gradient 25s ease infinite',
         'gradient-x': 'gradient-x 15s ease infinite',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -87,5 +98,8 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    typography,
+    require("tailwindcss-animate")
+  ],
 } satisfies Config;
