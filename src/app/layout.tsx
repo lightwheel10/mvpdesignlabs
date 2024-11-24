@@ -2,7 +2,6 @@ import localFont from "next/font/local";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
-import { baseMetadata } from "@/lib/metadata";
 import Script from "next/script";
 import { Analytics } from '@vercel/analytics/react';
 
