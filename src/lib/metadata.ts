@@ -26,7 +26,11 @@ export const baseMetadata: Metadata = {
     "Next.js Agency",
     "Startup Development",
     "Product Development",
-    "MVP Strategy"
+    "MVP Strategy",
+    "MVP Validation",
+    "Startup Ideas",
+    "Product-Market Fit",
+    "Idea Validation"
   ],
   authors: [{ name: "MVP Design Labs" }],
   creator: "MVP Design Labs",
