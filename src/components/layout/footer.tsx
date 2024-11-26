@@ -29,6 +29,19 @@ const socialLinks = [
     href: 'https://twitter.com/parastiwaari',
     icon: XIcon,
   },
+  {
+    name: 'Product Hunt',
+    href: 'https://www.producthunt.com/posts/mvp-design-labs?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-mvp-design-labs',
+    component: () => (
+      <img 
+        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=647661&theme=light" 
+        alt="MVP Design Labs - Transforming ideas into reality | Product Hunt"
+        width="125"
+        height="27"
+        style={{ width: '125px', height: '27px' }}
+      />
+    ),
+  },
 ];
 
 const footerLinks = [
@@ -73,8 +86,8 @@ export const Footer = () => {
   return (
     <footer className="border-t">
       <div className="container py-4">
-        <div className="grid grid-cols-3 items-center">
-          <div className="flex items-center gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 items-center">
+          <div className="flex items-center gap-4 justify-center md:justify-start">
             <Link href="/" className="text-xl font-bold">
               MVPDesignLabs
             </Link>
@@ -88,13 +101,19 @@ export const Footer = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <social.icon className="w-5 h-5" />
-                <span className="sr-only">{social.name}</span>
+                {social.icon ? (
+                  <>
+                    <social.icon className="w-5 h-5" />
+                    <span className="sr-only">{social.name}</span>
+                  </>
+                ) : social.component ? (
+                  <social.component />
+                ) : null}
               </motion.a>
             ))}
           </div>
           
-          <nav className="flex items-center justify-center gap-8">
+          <nav className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
             {footerLinks.map((link) => (
               <a
                 key={link.label}
@@ -107,7 +126,7 @@ export const Footer = () => {
             ))}
           </nav>
 
-          <div className="text-sm text-muted-foreground text-right">
+          <div className="text-sm text-muted-foreground text-center md:text-right">
             {new Date().getFullYear()} MVPDesignLabs. All rights reserved.
           </div>
         </div>

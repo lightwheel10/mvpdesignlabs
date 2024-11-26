@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mvpdesignlabs.com</loc>
+    <xhtml:link 
+      rel="alternate"
+      href="https://www.producthunt.com/posts/mvp-design-labs"
+      />
     <lastmod>2024-03-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>

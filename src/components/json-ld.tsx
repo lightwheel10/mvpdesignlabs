@@ -6,7 +6,8 @@ export const JsonLd = ({ type = "website", data = {} }) => {
     url: "https://www.mvpdesignlabs.com",
     logo: "https://www.mvpdesignlabs.com/logo.png",
     sameAs: [
-      "https://twitter.com/mvpdesignlabs",
+      "https://twitter.com/parastiwaari",
+      "https://www.producthunt.com/posts/mvp-design-labs",
       "https://linkedin.com/company/mvpdesignlabs",
     ]
   };
