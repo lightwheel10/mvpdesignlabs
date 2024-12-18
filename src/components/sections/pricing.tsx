@@ -9,34 +9,6 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 
 const pricingPlans = [
   {
-    name: "Launch Special",
-    price: "Free",
-    duration: "limited time",
-    description: "Launch your product with us and get 3 months of active development free",
-    features: {
-      included: [
-        "Full MVP Development",
-        "3 Months Free Development",
-        "UI/UX Design",
-        "Technical Documentation",
-        "Deployment & Setup",
-        "Source Code Ownership",
-        "Weekly Updates",
-        "Priority Support"
-      ],
-      notIncluded: []
-    },
-    conditions: [
-      "Must launch within 8 weeks",
-      "Public release required",
-      "Case study permission",
-      "Testimonial after launch"
-    ],
-    popular: false,
-    limitedTime: true,
-    cta: "Apply Now",
-  },
-  {
     name: "MVP Development",
     price: {
       original: "3,500",
@@ -128,7 +100,7 @@ export const Pricing = () => {
           </motion.div>
 
           {/* Pricing Cards - adjusted for mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={plan.name}
@@ -157,22 +129,12 @@ export const Pricing = () => {
                   {/* Price */}
                   <div className="border-y border-border/50 py-4 md:py-6">
                     <div className="flex items-baseline gap-2 mb-1">
-                      {plan.price === "Free" ? (
-                        <span className="text-4xl md:text-5xl font-bold text-primary">{plan.price}</span>
-                      ) : (
-                        <>
-                          <span className="text-4xl md:text-5xl font-bold">${typeof plan.price === 'string' ? plan.price : plan.price.discounted}</span>
-                          {typeof plan.price !== 'string' && (
-                            <span className="text-base md:text-lg line-through text-muted-foreground">${plan.price.original}</span>
-                          )}
-                          <span className="text-sm md:text-base text-muted-foreground">{plan.duration}</span>
-                        </>
-                      )}
+                      <span className="text-4xl md:text-5xl font-bold">${plan.price.discounted}</span>
+                      <span className="text-base md:text-lg line-through text-muted-foreground">${plan.price.original}</span>
+                      <span className="text-sm md:text-base text-muted-foreground">{plan.duration}</span>
                     </div>
                     <p className="text-xs md:text-sm text-muted-foreground">
-                      {plan.duration === 'one-time' ? 'Including 3 months support' : 
-                       plan.duration === 'limited time' ? 'Terms and conditions apply' : 
-                       'Cancel anytime'}
+                      {plan.duration === 'one-time' ? 'Including 3 months support' : 'Cancel anytime'}
                     </p>
                   </div>
 
@@ -189,20 +151,6 @@ export const Pricing = () => {
                         ))}
                       </ul>
                     </div>
-
-                    {plan.conditions && (
-                      <div>
-                        <p className="text-xs md:text-sm font-medium mb-3 md:mb-4 text-primary">Conditions:</p>
-                        <ul className="space-y-2 md:space-y-3">
-                          {plan.conditions.map((condition) => (
-                            <li key={condition} className="flex items-center gap-2 md:gap-3 text-xs md:text-sm">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                              <span className="text-muted-foreground">{condition}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
 
                     {plan.features.notIncluded.length > 0 && (
                       <div>
