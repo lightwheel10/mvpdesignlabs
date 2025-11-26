@@ -5,8 +5,13 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { BookingModal } from "@/components/booking-modal";
+import dynamic from "next/dynamic";
 import { Menu, X } from "lucide-react";
+
+// Lazy load BookingModal since it's only shown on user interaction
+const BookingModal = dynamic(() => import("@/components/booking-modal").then(mod => ({ default: mod.BookingModal })), {
+  ssr: false,
+});
 
 const navLinks = [
   {

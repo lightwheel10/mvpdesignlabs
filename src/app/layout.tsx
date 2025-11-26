@@ -1,25 +1,15 @@
-import localFont from "next/font/local";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 import Script from "next/script";
 import { Analytics } from '@vercel/analytics/react';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-const inter = Inter({ subsets: ["latin"] });
-const plusJakarta = Plus_Jakarta_Sans({ 
+// Optimized font loading with font-display swap for better performance
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: '--font-plus-jakarta'
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata = {
@@ -55,13 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Load Google Analytics with lazyOnload for better performance */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-ETF5SYHZ1G"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         >
           {`
             window.dataLayer = window.dataLayer || [];
@@ -72,7 +63,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} ${plusJakarta.variable} antialiased`}
+        className={`${plusJakarta.className} antialiased`}
       >
         {children}
         <Footer />

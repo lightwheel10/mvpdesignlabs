@@ -4,8 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Code, Rocket, Layout } from "lucide-react";
 import { useState, useEffect } from "react";
-import { BookingModal } from "@/components/booking-modal";
+import dynamic from "next/dynamic";
 import { useAnalytics } from '@/hooks/useAnalytics';
+
+// Lazy load BookingModal since it's only shown on user interaction
+const BookingModal = dynamic(() => import("@/components/booking-modal").then(mod => ({ default: mod.BookingModal })), {
+  ssr: false,
+});
 
 const rotatingWords = [
   { text: "Innovation", color: "text-blue-500" },

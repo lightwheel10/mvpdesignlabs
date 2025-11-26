@@ -115,7 +115,6 @@ export const Testimonials = () => {
                           alt={testimonials[currentIndex].name}
                           fill
                           className="object-cover"
-                          priority
                         />
                       </div>
                       <div>
@@ -190,7 +189,6 @@ export const Testimonials = () => {
                     alt=""
                     fill
                     className="object-cover rounded-2xl md:rounded-3xl"
-                    priority
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={90}
                   />
