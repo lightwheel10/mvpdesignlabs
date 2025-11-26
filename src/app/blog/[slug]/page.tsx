@@ -17,16 +17,17 @@ const md = new MarkdownIt({
 });
 
 type PageParams = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata(
   { params }: PageParams
 ): Promise<Metadata> {
   try {
-    const post = await getPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getPostBySlug(slug);
     return {
       title: post.title,
       description: post.excerpt,
@@ -49,7 +50,8 @@ export default async function BlogPost(
   { params }: PageParams
 ) {
   try {
-    const post = await getPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getPostBySlug(slug);
     const date = format(new Date(post.date), 'MMMM d, yyyy');
     const htmlContent = md.render(post.content);
 
@@ -100,7 +102,7 @@ export default async function BlogPost(
                 alt={post.title}
                 fill
                 className="object-cover"
-                priority
+                sizes="(max-width: 1024px) 100vw, 1024px"
               />
             </div>
           )}
